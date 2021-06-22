@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <definition name="order-page" template="/WEB-INF/order-layout.jsp">
+        <put-attribute name="order-header" value="/WEB-INF/order-page/order-header.jsp" />
+        <put-attribute name="order-menu" value="/WEB-INF/order-page/order-menu.jsp"/>
+        <put-attribute name="order-products" value="/WEB-INF/order-page/order-products.jsp"/>
+        <put-attribute name="order-cart" value="/WEB-INF/order-page/order-cart.jsp"/>
+        <put-attribute name="order-pagination" value="/WEB-INF/order-page/order-pagination.jsp"/>
+        <put-attribute name="loader" value="/WEB-INF/common/_loader.jsp"/>
+        <put-attribute name="order-form" value=""/>
+        <put-attribute name="notify" value="/WEB-INF/common/notify.jsp"/>
+    </definition>
+
+    <definition name="ordering" extends="order-page">
+        <put-attribute name="order-form" value="/WEB-INF/order-page/order-form.jsp"/>
+    </definition>
+
+</tiles-definitions>

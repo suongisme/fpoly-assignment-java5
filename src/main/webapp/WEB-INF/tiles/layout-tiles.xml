@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <definition name="baseTemplate" template="/WEB-INF/layout.jsp">
+        <put-attribute name="header" value="/WEB-INF/common/_header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/common/_footer.jsp"/>
+        <put-attribute name="title" value="Base View"/>
+    </definition>
+
+    <definition name="home" extends="baseTemplate">
+        <put-attribute name="content" value="/WEB-INF/page/home.jsp" />
+        <put-attribute name="css" value="css/home.css" />
+        <put-attribute name="title" value="Trang chủ" />
+    </definition>
+
+    <definition name="productId" extends="baseTemplate">
+        <put-attribute name="content" value="/WEB-INF/page/detail_product.jsp"/>
+        <put-attribute name="css" value="css/detail_product.css"/>
+    </definition>
+
+    <definition name="not-found" extends="baseTemplate">
+        <put-attribute name="content" value="/WEB-INF/page/error.jsp"/>
+        <put-attribute name="title" value="ERROR"/>
+    </definition>
+
+    <definition name="history-order" extends="baseTemplate">
+        <put-attribute name="content" value="/WEB-INF/page/history-order.jsp"/>
+        <put-attribute name="css" value="css/history.css"/>
+    </definition>
+
+</tiles-definitions>
