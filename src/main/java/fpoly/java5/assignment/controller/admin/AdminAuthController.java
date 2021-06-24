@@ -1,5 +1,6 @@
 package fpoly.java5.assignment.controller.admin;
 
+import fpoly.java5.assignment.constant.Constant;
 import fpoly.java5.assignment.model.User;
 import fpoly.java5.assignment.modelform.UserLoginForm;
 import fpoly.java5.assignment.service.UserService;
@@ -35,7 +36,7 @@ public class AdminAuthController {
     }
 
     @PostMapping("/login")
-    public String login(@Valid @ModelAttribute UserLoginForm userLoginForm, BindingResult result) {
+    public String login(@Valid @ModelAttribute UserLoginForm userLoginForm, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
             return "admin-login";
@@ -44,8 +45,13 @@ public class AdminAuthController {
         User login = userService.login(userLoginForm);
 
         if (login == null) {
+            model.addAttribute("notify", "Tài khoản hoặc mật khẩu sai");
+            return "admin-login";
+        }
 
-            return "redirect:/login";
+        if (!login.getRole().equals(Constant.ADMIN_ROLE)) {
+            model.addAttribute("notify", "Bạn không có quyền vào đây");
+            return "admin-login";
         }
 
         session.setAttribute("admin", login);

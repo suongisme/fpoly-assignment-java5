@@ -64,11 +64,10 @@ public class OrderController {
 		model.addAttribute("sizes", sizeService.findAll());
 		model.addAttribute("sugars", sugarService.findAll());
 		model.addAttribute("ices", iceService.findAll());
-		
-		model.addAttribute("product", productService.findById(productId));
-		model.addAttribute("size", new Size());
 		model.addAttribute("toppings", toppingService.findAll());
 		model.addAttribute("carts", cartService.getAll());
+
+		model.addAttribute("product", productService.findById(productId));
 		return "ordering";
 	}
 }

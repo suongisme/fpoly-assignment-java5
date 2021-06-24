@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/admin")
@@ -32,15 +33,25 @@ public class AdminUserController {
     }
 
     @GetMapping("/user/disable/{id}")
-    public String disable(@PathVariable Long id) {
-        userService.disable(id);
+    public String disable(@PathVariable Long id, RedirectAttributes attributes) {
+        try {
+            userService.disable(id);
+            attributes.addFlashAttribute("notify", "Vô hiệu hóa thành công");
+        } catch ( Exception e) {
+            attributes.addFlashAttribute("notify", "Vô hiệu hóa thất bại");
+        }
 
         return "redirect:/admin/user";
     }
 
     @GetMapping("/user/enable/{id}")
-    public String enable(@PathVariable Long id) {
-        userService.enable(id);
+    public String enable(@PathVariable Long id, RedirectAttributes attributes) {
+        try {
+            userService.enable(id);
+            attributes.addFlashAttribute("notify", "Bật thành công");
+        } catch ( Exception e) {
+            attributes.addFlashAttribute("notify", "Bật thất bại");
+        }
 
         return "redirect:/admin/user";
     }

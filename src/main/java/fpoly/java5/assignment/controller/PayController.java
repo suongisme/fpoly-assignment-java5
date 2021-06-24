@@ -44,23 +44,28 @@ public class PayController {
 			return "redirect:/order";
 		}
 
-		// 2. get user logged
-		User login = (User) session.getAttribute("login");
+		try {
+			// 2. get user logged
+			User login = (User) session.getAttribute("login");
 
-		// 3. create a receipt with use logged and date now
-		Receipt receipt = new Receipt();
-		receipt.setDate(new Date());
-		receipt.setUser(login);
+			// 3. create a receipt with use logged and date now
+			Receipt receipt = new Receipt();
+			receipt.setDate(new Date());
+			receipt.setUser(login);
 
-		// 4. store receipt to DB
-		Receipt receipt1 = receiptService.addReceipt(receipt);
+			// 4. store receipt to DB
+			Receipt receipt1 = receiptService.addReceipt(receipt);
 
-		// 5. store those products to DB with receipt above
-		itemService.addItem(items, receipt1);
+			// 5. store those products to DB with receipt above
+			itemService.addItem(items, receipt1);
 
-		// 6. remove all products in cart
-		cartService.removeAll();
-		redirectAttributes.addFlashAttribute("notify", "dat hang thanh cong");
+			// 6. remove all products in cart
+			cartService.removeAll();
+			redirectAttributes.addFlashAttribute("notify", "Đặt hàng thành công");
+
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("notify", "đặt hàng thất bại!");
+		}
 		return "redirect:/order";
 	}
 }

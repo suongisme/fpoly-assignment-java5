@@ -18,6 +18,7 @@
 
     <title>ADMIN-LOGIN</title>
 
+    <link href="${pageContext.request.contextPath}/css/notify.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
@@ -29,6 +30,9 @@
 </head>
 
 <body>
+
+<jsp:include page="common/notify.jsp"/>
+
 <div id="login-page">
     <div class="container">
 
@@ -88,6 +92,7 @@
     </div>
 </div>
 
+<script src="${pageContext.request.contextPath}/js/notify.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 

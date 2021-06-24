@@ -31,12 +31,6 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/admin/login")
                 .order(1);
 
-        // must be admin
-        registry.addInterceptor(new AuthInterceptor())
-                .addPathPatterns("/admin/**")
-                .excludePathPatterns("/admin/login")
-                .order(2);
-
         // assign object before show form
         registry.addInterceptor(new AssignFormInterceptor(categoryService))
                 .addPathPatterns("/admin/**")

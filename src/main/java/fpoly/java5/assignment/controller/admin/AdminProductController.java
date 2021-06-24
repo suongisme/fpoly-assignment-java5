@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -43,24 +44,39 @@ public class AdminProductController {
     @PostMapping("/product")
     public String submit(@Valid @ModelAttribute Product product,
                          BindingResult result,
-                         @RequestParam(name = "file") MultipartFile multipartFile) throws IOException {
+                         RedirectAttributes redirectAttributes,
+                         @RequestParam(name = "file") MultipartFile multipartFile) {
 
         if (result.hasErrors()) {
             return "admin-form";
         }
 
-        if (!multipartFile.getOriginalFilename().isBlank()) {
-            String path = imageService.store(multipartFile);
-            product.setImage(path);
+        try {
+            if (!multipartFile.getOriginalFilename().isBlank()) {
+                String path = imageService.store(multipartFile);
+                product.setImage(path);
+            }
+            productService.submit(product);
+            redirectAttributes.addFlashAttribute("notify", "Thao tác thành công!");
+        } catch (Exception e) {
+            if (e instanceof IOException) {
+                redirectAttributes.addFlashAttribute("notify", "Lôi upload ảnh!");
+            } else {
+                redirectAttributes.addFlashAttribute("notify", "Thao tác lỗi");
+            }
         }
 
-        productService.submit(product);
         return "redirect:/admin/product-management";
     }
 
     @GetMapping("/product/{id}")
-    public String delete(@PathVariable Long id) {
-        productService.delete(id);
+    public String delete(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        try {
+            productService.delete(id);
+            redirectAttributes.addFlashAttribute("notify", "Xóa thành công!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("notify", "Xóa thất bại!");
+        }
         return "redirect:/admin/product-management";
     }
 }

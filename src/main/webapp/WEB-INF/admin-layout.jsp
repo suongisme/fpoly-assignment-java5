@@ -16,6 +16,7 @@
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
     <title>Administrator</title>
+    <link href="${pageContext.request.contextPath}/css/notify.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.css" rel="stylesheet">
@@ -44,6 +45,8 @@
 </head>
 <body>
 
+    <tiles:insertAttribute name="notify"/>
+
     <div class="header black-bg">
         <tiles:insertAttribute name="header"/>
     </div>
@@ -58,6 +61,7 @@
         </div>
     </div>
 
+    <script src="${pageContext.request.contextPath}/js/notify.js"></script>
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/jquery-1.8.3.min.js"></script>

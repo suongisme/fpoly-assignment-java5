@@ -1,5 +1,7 @@
 .notify-block {
     display: flex;
+    justify-content: space-between;
+
     background: white;
     position: absolute;
 
@@ -22,6 +24,7 @@
 
 .notify {
     margin-top: 20px;
+    font-size: 17px;
 }
 
 .btn-notify {
