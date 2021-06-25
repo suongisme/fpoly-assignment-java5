@@ -12,7 +12,7 @@
     display: flex;
     position: fixed;
     width: 100%;
-    padding: 10px 100px;
+    padding: 10px 20px 10px 100px;
     transition: all 1s;
     z-index: 1000;
 }

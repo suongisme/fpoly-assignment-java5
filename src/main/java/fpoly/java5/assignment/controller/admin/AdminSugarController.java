@@ -21,7 +21,7 @@ public class AdminSugarController {
     public String submit(@Valid @ModelAttribute Sugar sugar, BindingResult result, RedirectAttributes redirectAttributes) {
 
         if (result.hasErrors()) {
-            return "admin-form#sugar";
+            return "admin-form";
         }
         try {
             sugarService.submit(sugar);

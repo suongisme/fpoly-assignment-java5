@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -40,11 +41,18 @@ public class OrderController {
 
 	@Autowired
 	private CartService cartService;
+
+	@Autowired
+	HttpSession session;
 	
 	@GetMapping
-	public String orderProduct(@RequestParam(defaultValue = "1", name = "category_id") Long categoryId,
+	public String orderProduct(@RequestParam(required = false, name = "category_id") Long categoryId,
 							   @RequestParam(defaultValue = "1") Integer page,
 							   Model model) {
+
+		if (categoryId == null || categoryId == 0) {
+			categoryId = categoryService.findOne().getId();
+		}
 
 		Page<Product> allByCategoryId = productService.findAllByCategoryId(categoryId, page);
 
@@ -52,15 +60,21 @@ public class OrderController {
 		model.addAttribute("categories", categoryService.findAll());
 		model.addAttribute("products", allByCategoryId.getContent());
 		model.addAttribute("carts", cartService.getAll());
+		model.addAttribute("category", categoryService.findById(categoryId));
 		return "order-page";
 	}
 	
-	@GetMapping(params = {"product_id"})
-	public String orderProduct(@RequestParam(required = true, name = "product_id") Long productId,
+	@GetMapping(params = {"product_id", "category_id"})
+	public String orderProduct(@RequestParam(name = "product_id") Long productId,
+							   @RequestParam(name = "category_id") Long categoryId,
 							   Model model) {
 
+		Page<Product> productPage = productService.findAllByCategoryId(categoryId, 1);
+
+		model.addAttribute("products", productPage.getContent());
+		model.addAttribute("pages", PageUtils.getPages(productPage.getTotalPages()));
+
 		model.addAttribute("categories", categoryService.findAll());
-		model.addAttribute("products", productService.findAll());
 		model.addAttribute("sizes", sizeService.findAll());
 		model.addAttribute("sugars", sugarService.findAll());
 		model.addAttribute("ices", iceService.findAll());
@@ -68,6 +82,7 @@ public class OrderController {
 		model.addAttribute("carts", cartService.getAll());
 
 		model.addAttribute("product", productService.findById(productId));
+
 		return "ordering";
 	}
 }

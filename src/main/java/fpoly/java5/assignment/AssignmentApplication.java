@@ -18,12 +18,5 @@ public class AssignmentApplication implements WebMvcConfigurer {
         SpringApplication.run(AssignmentApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext context) {
-        return (x) -> {
-            Arrays.stream(context.getBeanDefinitionNames())
-                .filter(z -> z.contains("message"))
-                .forEach(System.out::println);
-        };
-    }
+
 }

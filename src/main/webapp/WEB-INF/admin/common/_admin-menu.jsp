@@ -9,42 +9,42 @@
         <h5 class="centered">NguyenVanSuong</h5>
 
         <li class="mt">
-            <a class="active" href="${pageContext.request.contextPath}/admin/user">
+            <a class="${requestScope.active eq 'user' ? 'active' : ''}" href="${pageContext.request.contextPath}/admin/user">
                 <i class="fa fa-dashboard"></i>
                 <span>Quản lý người dùng</span>
             </a>
         </li>
 
         <li class="mt">
-            <a href="${pageContext.request.contextPath}/admin/category-management" >
+            <a class="${requestScope.active eq 'category' ? 'active' : ''}" href="${pageContext.request.contextPath}/admin/category-management" >
                 <i class="fa fa-desktop"></i>
                 <span>Quản lý loại sản phẩm</span>
             </a>
         </li>
 
         <li class="mt">
-            <a href="${pageContext.request.contextPath}/admin/product-management" >
+            <a class="${requestScope.active eq 'product' ? 'active' : ''}" href="${pageContext.request.contextPath}/admin/product-management" >
                 <i class="fa fa-desktop"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
         </li>
 
         <li class="mt">
-            <a href="${pageContext.request.contextPath}/admin/resources-management" >
+            <a class="${requestScope.active eq 'resources' ? 'active' : ''}" href="${pageContext.request.contextPath}/admin/resources-management" >
                 <i class="fa fa-cogs"></i>
                 <span>Quản lý tài nguyên</span>
             </a>
         </li>
 
         <li class="mt">
-            <a href="${pageContext.request.contextPath}/admin/receipt-management" >
+            <a class="${requestScope.active eq 'receipt' ? 'active' : ''}" href="${pageContext.request.contextPath}/admin/receipt-management" >
                 <i class="fa fa-desktop"></i>
                 <span>Quản lý hóa đơn</span>
             </a>
         </li>
 
         <li class="mt">
-            <a href="${pageContext.request.contextPath}/admin/form" >
+            <a class="${requestScope.active eq 'form' ? 'active' : ''}" href="${pageContext.request.contextPath}/admin/form" >
                 <i class="fa fa-desktop"></i>
                 <span>Form</span>
             </a>

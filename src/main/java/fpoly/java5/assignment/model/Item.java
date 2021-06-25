@@ -26,7 +26,7 @@ public class Item {
 	
 	@OneToOne
 	@JoinColumn(name = "size_id", referencedColumnName = "id")
-	private Size size;
+	private Size name;
 	
 	@OneToOne
 	@JoinColumn(name = "sugar_id", referencedColumnName = "id")

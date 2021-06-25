@@ -23,6 +23,7 @@ public class AdminReceiptController {
         Page<Receipt> all = receiptService.findAll(page);
         model.addAttribute("receipts", all.getContent());
         model.addAttribute("pages", PageUtils.getPages(all.getTotalPages()));
+        model.addAttribute("active", "receipt");
         return "receipt-management";
     }
 }

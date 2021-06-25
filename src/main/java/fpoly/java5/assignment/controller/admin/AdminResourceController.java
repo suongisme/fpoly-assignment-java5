@@ -33,6 +33,8 @@ public class AdminResourceController {
         model.addAttribute("sizes", sizeService.findAll());
         model.addAttribute("sugars", sugarService.findAll());
         model.addAttribute("toppings", toppingService.findAll());
+
+        model.addAttribute("active", "resources");
         return "resource-management";
     }
 

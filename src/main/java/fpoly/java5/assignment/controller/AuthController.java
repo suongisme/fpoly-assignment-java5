@@ -56,12 +56,12 @@ public class AuthController {
         }
 
         session.setAttribute("login", login);
-        return "redirect:/order";
+        return "redirect:/home";
     }
 
     @GetMapping("/logout")
     public String logout() {
-        session.removeAttribute("login");
+        session.invalidate();
         return "redirect:/home";
     }
 }

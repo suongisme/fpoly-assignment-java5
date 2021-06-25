@@ -12,26 +12,16 @@
                         <thead>
                         <tr>
 
-                            <th>
-                                <i class="fa fa-bullhorn"></i>
-                                Mã hóa đơn
-                            </th>
-                            <th>
-                                <i class="fa fa-bullhorn"></i>
-                                Ngày
-                            </th>
-                            <th>
-                                <i class="fa fa-bullhorn"></i>
-                                Tên sản phẩm
-                            </th>
-                            <th>
-                                <i class="fa fa-bookmark"></i> Size</th>
-                            <th><i class="fa fa-bookmark"></i> Topping</th>
-                            <th><i class="fa fa-bookmark"></i> Đá</th>
-                            <th><i class="fa fa-bookmark"></i> Đường</th>
-                            <th><i class="fa fa-bookmark"></i> Số lượng</th>
-                            <th><i class="fa fa-bookmark"></i> Hình thức</th>
-                            <th><i class="fa fa-bookmark"></i> Tổng tiền</th>
+                            <th>Mã</th>
+                            <th>Ngày</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Size</th>
+                            <th>Topping</th>
+                            <th>Đá</th>
+                            <th>Đường</th>
+                            <th>SL</th>
+                            <th>Hình thức</th>
+                            <th>Tổng</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -48,7 +38,7 @@
                                         <td rowspan="${receipt.items.size()}">${receipt.date}</td>
                                     </c:if>
                                     <td>${item.product.name}</td>
-                                    <td>${item.size.name}</td>
+                                    <td>${item.name.name}</td>
                                     <td>
                                         <c:set var="totalPriceTopping" value="0"/>
                                         <c:if test="${item.topping.size() eq 0}">
@@ -76,5 +66,14 @@
             </div><!-- /col-md-12 -->
         </div><!-- /row -->
     </section>
+    <nav aria-label="Page navigation example" style="display: flex; justify-content: center">
+        <ul class="pagination">
+            <c:forEach var="page" items="${pages}">
+                <li class="page-item">
+                    <a  style="background: ${param.page eq page ? '#1919e659' : 'white'}" class="page-link" href="${pageContext.request.contextPath}/admin/receipt-management?page=${page}">${page}</a>
+                </li>
+            </c:forEach>
+        </ul>
+    </nav>
 </section>
 

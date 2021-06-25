@@ -37,6 +37,7 @@ public class ProductService {
 
 	public Page<Product> findAllByCategoryId(Long id, Integer page) {
 
+
 		PageRequest pageRequest = PageRequest.of(page-1, Constant.ORDER_MAX_PRODUCT_PER_PAGE);
 
 		return productRepository.findAllByCategoryId(id, pageRequest);

@@ -21,7 +21,7 @@ public class AdminToppingController {
     public String submit(@Valid @ModelAttribute Topping topping, BindingResult result, RedirectAttributes attributes) {
 
         if (result.hasErrors()) {
-            return "admin-form#topping";
+            return "admin-form";
         }
         try {
             toppingService.submit(topping);

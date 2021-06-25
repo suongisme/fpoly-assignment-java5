@@ -160,12 +160,3 @@
 
     </section><! --/wrapper -->
 </section><!-- /MAIN CONTENT -->
-
-<script>
-    //custom select box
-
-    $(function(){
-        $('select.styled').customSelect();
-    });
-
-</script>

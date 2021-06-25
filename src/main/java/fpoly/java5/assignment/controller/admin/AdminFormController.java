@@ -35,7 +35,7 @@ public class AdminFormController {
 
     @GetMapping
     public String showForm(Model model) {
-        
+        model.addAttribute("active", "form");
         return "admin-form";
     }
 

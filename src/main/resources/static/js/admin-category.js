@@ -8,7 +8,7 @@ btnDeleteCateogories.forEach(btn => {
 
 
         if (products > 0 || products2 > 0) {
-            accept = confirm("Xóa loại sản phẩm và "+products+" sản phẩm! Bạn có chắc không!")
+            accept = confirm("Loại sản phẩm này đang chứa sản phẩm. Bạn có muốn xóa không?")
         } else {
             accept = confirm("Bạn có muốn xóa loại sản phẩm này không?")
         }

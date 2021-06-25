@@ -29,6 +29,7 @@ public class AdminUserController {
         model.addAttribute("users", userAll.getContent());
         model.addAttribute("userPages", PageUtils.getPages(userAll.getTotalPages()));
 
+        model.addAttribute("active", "user");
         return "user-management";
     }
 

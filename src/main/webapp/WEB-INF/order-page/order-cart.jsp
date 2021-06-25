@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="cart__header">
     <h3 class="header__heading">Giỏ Hàng</h3>
-    <a class="header__clean" href="${pageContext.request.contextPath}/shop/cart/clear">xóa tất cả</a>
+    <a class="header__clean" href="${pageContext.request.contextPath}/cart/clear">xóa tất cả</a>
 </div>
 <div class="cart__items">
     <c:choose>
@@ -21,7 +21,7 @@
                     <div class="item__info">
                         <p class="item-info__name">${cart.product.name}</p>
                         <p class="item-info__size">
-                            Size M, ${cart.ice.icePercent}% đá, ${cart.sugar.sugarPercent}% Đường
+                            ${cart.name.name}, ${cart.ice.icePercent}% đá, ${cart.sugar.sugarPercent}% Đường
                             <c:forEach var="topping" items="${cart.topping}">
                                 ,${topping.name}
                                 <c:set var="total_money" value="${total_money + topping.price}"/>

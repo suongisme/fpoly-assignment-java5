@@ -41,7 +41,7 @@
                         <td rowspan="${receipt.items.size()}">${receipt.date}</td>
                     </c:if>
                     <td>${item.product.name}</td>
-                    <td>${item.size.name}</td>
+                    <td>${item.name.name}</td>
                     <td>
                     <c:set var="totalPriceTopping" value="0"/>
                     <c:if test="${item.topping.size() eq 0}">

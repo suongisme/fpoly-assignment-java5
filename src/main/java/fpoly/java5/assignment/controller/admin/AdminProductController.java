@@ -3,6 +3,7 @@ package fpoly.java5.assignment.controller.admin;
 import fpoly.java5.assignment.model.Product;
 import fpoly.java5.assignment.service.ImageService;
 import fpoly.java5.assignment.service.ProductService;
+import fpoly.java5.assignment.utils.ImageUtils;
 import fpoly.java5.assignment.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,6 +32,7 @@ public class AdminProductController {
         Page<Product> result = productService.findAll(page);
         model.addAttribute("products", result.getContent());
         model.addAttribute("pages", PageUtils.getPages(result.getTotalPages()));
+        model.addAttribute("active", "product");
         return "product-management";
     }
 
@@ -53,9 +55,15 @@ public class AdminProductController {
 
         try {
             if (!multipartFile.getOriginalFilename().isBlank()) {
+
+                if (!ImageUtils.isImage(multipartFile.getOriginalFilename())) {
+                    throw new IOException();
+                }
+
                 String path = imageService.store(multipartFile);
                 product.setImage(path);
             }
+
             productService.submit(product);
             redirectAttributes.addFlashAttribute("notify", "Thao tác thành công!");
         } catch (Exception e) {

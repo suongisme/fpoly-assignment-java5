@@ -11,12 +11,12 @@
             <div class="col-lg-12">
                 <div class="form-panel">
                     <h4 class="mb"><i class="fa fa-angle-right"></i> Loại sản phẩm</h4>
-                    <form:form action="${context}/admin/category" class="form-inline" role="form" modelAttribute="category">
+                    <form:form action="${context}/admin/category#category" class="form-inline" role="form" modelAttribute="category">
                         <form:input path="id" type="hidden"/>
 
                         <div class="form-group">
                             <form:label path="name" cssClass="sr-only" for="exampleInputEmail2">Tên loại</form:label>
-                            <form:input path="name" class="form-control" id="exampleInputEmail2" placeholder="Enter name category"/>
+                            <form:input path="name" class="form-control" id="exampleInputEmail2" placeholder="Nhập loại sản phẩm"/>
                             <form:errors path="name"/>
                         </div>
                         <button class="btn btn-theme">Submit</button>
@@ -30,11 +30,11 @@
             <div class="col-lg-12">
                 <div class="form-panel">
                     <h4 class="mb"><i class="fa fa-angle-right"></i> Đá (%)</h4>
-                    <form:form action="${context}/admin/ice" class="form-inline" role="form" modelAttribute="ice">
+                    <form:form action="${context}/admin/ice#ice" class="form-inline" role="form" modelAttribute="ice">
                         <form:input path="id" type="hidden"/>
                         <div class="form-group">
                             <form:label path="icePercent" cssClass="sr-only" for="exampleInputEmail2">Tỷ lệ</form:label>
-                            <form:input path="icePercent" cssClass="form-control" placeholder="Enter name category"/>
+                            <form:input path="icePercent" type="number" cssClass="form-control" placeholder="Nhập tỷ lệ đá"/>
                             <form:errors path="icePercent"/>
                         </div>
                         <button class="btn btn-theme">Submit</button>
@@ -48,11 +48,11 @@
             <div class="col-lg-12">
                 <div class="form-panel">
                     <h4 class="mb"><i class="fa fa-angle-right"></i> Đường (%)</h4>
-                    <form:form action="${context}/admin/sugar" cssClass="form-inline" role="form" modelAttribute="sugar">
+                    <form:form action="${context}/admin/sugar#sugar" cssClass="form-inline" role="form" modelAttribute="sugar">
                         <form:input path="id" type="hidden"/>
                         <div class="form-group">
                             <form:label path="sugarPercent" cssClass="sr-only" for="exampleInputEmail2">Tỷ lệ</form:label>
-                            <form:input path="sugarPercent" cssClass="form-control" placeholder="Enter name category"/>
+                            <form:input path="sugarPercent" type="number" cssClass="form-control" placeholder="Nhập tỷ lệ đường"/>
                             <form:errors path="sugarPercent"/>
                         </div>
                         <button type="submit" class="btn btn-theme">Submit</button>
@@ -66,11 +66,11 @@
             <div class="col-lg-12">
                 <div class="form-panel">
                     <h4 class="mb"><i class="fa fa-angle-right"></i> Size</h4>
-                    <form:form action="${context}/admin/size" cssClass="form-inline" role="form" modelAttribute="size">
+                    <form:form action="${context}/admin/size#size" cssClass="form-inline" role="form" modelAttribute="size">
                         <form:input path="id" type="hidden"/>
                         <div class="form-group">
                             <form:label path="name" cssClass="sr-only" for="exampleInputEmail2">Size</form:label>
-                            <form:input path="name" type="text" cssClass="form-control" placeholder="Enter name category"/>
+                            <form:input path="name" type="text" cssClass="form-control" placeholder="Nhập size"/>
                             <form:errors path="name"/>
                         </div>
                         <button type="submit" class="btn btn-theme">Submit</button>
@@ -84,12 +84,12 @@
             <div class="col-lg-12">
                 <div class="form-panel">
                     <h4 class="mb"><i class="fa fa-angle-right"></i> Topping</h4>
-                    <form:form action="${context}/admin/topping" cssClass="form-horizontal style-form" method="POST" modelAttribute="topping">
+                    <form:form action="${context}/admin/topping#topping" cssClass="form-horizontal style-form" method="POST" modelAttribute="topping">
                         <form:input path="id" type="hidden"/>
                         <div class="form-group">
                             <form:label path="name" cssClass="col-sm-2 col-sm-2 control-label">Tên topping</form:label>
                             <div class="col-sm-10">
-                                <form:input path="name" cssClass="form-control"/>
+                                <form:input path="name" cssClass="form-control" placeholder="Nhập tên topping"/>
                                 <form:errors path="name"/>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                         <div class="form-group">
                             <form:label path="price" cssClass="col-sm-2 col-sm-2 control-label">Giá</form:label>
                             <div class="col-sm-10">
-                                <form:input path="price" cssClass="form-control"/>
+                                <form:input path="price" type="number" cssClass="form-control" placeholder="Nhập giá topping"/>
                                 <span class="help-block">
                                     <form:errors path="price"/>
                                 </span>
@@ -140,7 +140,7 @@
                         <div class="form-group">
                             <form:label path="price" class="col-sm-2 col-sm-2 control-label">Giá</form:label>
                             <div class="col-sm-10">
-                                <form:input path="price" type="text" cssClass="form-control" placeholder="Giá"/>
+                                <form:input path="price" type="number" cssClass="form-control" placeholder="Giá"/>
                                 <span class="help-block">
                                     <form:errors path="price"/>
                                 </span>
@@ -150,7 +150,7 @@
                         <div class="form-group">
                             <form:label path="sale" cssClass="col-sm-2 col-sm-2 control-label">Giảm giá(%)</form:label>
                             <div class="col-sm-10">
-                                <form:input path="sale" type="text" cssClass="form-control round-form" placeholder="Giảm giá"/>
+                                <form:input path="sale" type="number" cssClass="form-control round-form" placeholder="Giảm giá"/>
                                 <form:errors path="sale"/>
                             </div>
                         </div>

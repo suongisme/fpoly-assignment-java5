@@ -23,7 +23,7 @@
                             <c:forEach var="product" items="${category.products}">
                                 <div class="list__product">
                                     <p class="product__sale">${product.sale}%</p>
-                                    <a class="product__img" href="${contextPath}/shop/product/${product.id}">
+                                    <a class="product__img" href="${contextPath}/product/${product.id}">
                                         <img src="${contextPath}/${ product.image }" alt="${product.name}">
                                     </a>
                                     <div class="products__info">

@@ -23,7 +23,7 @@ public class AdminSizeController {
     @PostMapping("/size")
     public String submit(@Valid @ModelAttribute Size size, BindingResult result, RedirectAttributes attributes) {
         if (result.hasErrors()) {
-            return "admin-form#size";
+            return "admin-form";
         }
         try {
             sizeService.submit(size);

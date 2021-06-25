@@ -51,7 +51,7 @@
                      </span>
             </div>
             <div style="text-align: center;">
-                <a href="" style="color: #007bff; font-family: Arial">Quay lại màn hình chính</a>
+                <a href="${pageContext.request.contextPath}/home" style="color: #007bff; font-family: Arial">Quay lại màn hình chính</a>
             </div>
         </form:form>
     </div>

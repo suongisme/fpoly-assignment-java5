@@ -24,7 +24,7 @@ public class AdminIceController {
     public String submit(@Valid @ModelAttribute Ice ice, BindingResult result, RedirectAttributes redirectAttributes) {
 
         if (result.hasErrors()) {
-            return "admin-form#ice";
+            return "admin-form";
         }
 
         try {

@@ -36,7 +36,7 @@
 							<label class="select__text" for="size-${ size.id }">${ size.name }</label>
 						</div>
 					</c:forEach>
-					
+
 				</div>
 			</div>
 			<div class="option__sugar">

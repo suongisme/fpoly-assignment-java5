@@ -29,6 +29,7 @@
     <definition name="history-order" extends="baseTemplate">
         <put-attribute name="content" value="/WEB-INF/page/history-order.jsp"/>
         <put-attribute name="css" value="css/history.css"/>
+        <put-attribute name="title" value="Lịch sử mua hàng"/>
     </definition>
 
 </tiles-definitions>

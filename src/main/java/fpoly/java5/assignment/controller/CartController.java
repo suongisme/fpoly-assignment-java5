@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,28 +16,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/cart")
 public class CartController {
-	
-	@Autowired
-	private ProductService productService;
-	
-	@Autowired
-	private SizeService sizeService;
-	
-	@Autowired
-	private IceService iceService;
-	
-	@Autowired
-	private SugarService sugarService;
-	
-	@Autowired
-	private ItemService itemService;
-	
+
 	@Autowired
 	private ToppingService toppingService;
 
 	@Autowired
 	private CartService cartService;
-	
+
 	@PostMapping
 	public String addItem(Item item, HttpServletRequest request) {
 
@@ -55,7 +41,9 @@ public class CartController {
 
 		cartService.addToCart(item);
 
-		return "redirect:/order";
+		String url = "redirect:/order?category_id="+item.getProduct().getCategory().getId()+"&page=1";
+
+		return url;
 	}
 
 	@GetMapping("/increase/{id}")
@@ -70,8 +58,6 @@ public class CartController {
 		});
 
 		cartService.reAdd(all);
-
-		Thread.sleep(2000);
 
 		return "ok";
 	}

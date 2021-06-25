@@ -27,7 +27,7 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "{validation.category.id}")
+	@NotBlank(message = "{validation.category.name}")
 	private String name;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "category", targetEntity = Product.class)

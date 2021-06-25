@@ -44,10 +44,11 @@ public class UserService {
             throw new RuntimeException(user.getUsername()+ " exist!");
         }
 
-
         if ("".equals(user.getRole()) || user.getRole() == null) {
             user.setRole(Constant.USER_ROLE);
         }
+
+        user.setActive(true);
         return userRepository.save(user);
     }
 
@@ -58,8 +59,6 @@ public class UserService {
         if (row != 1) {
             throw new RuntimeException("disable user id: "+id+" failed!");
         }
-
-
 
     }
 

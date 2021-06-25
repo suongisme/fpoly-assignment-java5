@@ -21,6 +21,7 @@ public class AdminCategoryController {
     @GetMapping("/category-management")
     public String category(Model model) {
         model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("active", "category");
         return "category-management";
     }
 
@@ -28,14 +29,14 @@ public class AdminCategoryController {
     public String submit(@Valid @ModelAttribute Category category, BindingResult result, RedirectAttributes redirectAttributes) {
 
         if (result.hasErrors()) {
-            return "admin-form#category";
+            return "admin-form";
         }
 
         try {
             categoryService.submit(category);
-            redirectAttributes.addFlashAttribute("notify", "Thêm loại sản phẩm thành công!");
+            redirectAttributes.addFlashAttribute("notify", "Thao tác thành công!");
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("notify", "Thêm thất bại!");
+            redirectAttributes.addFlashAttribute("notify", "Thao tác thất bại!");
         }
 
         return "redirect:/admin/category-management";
