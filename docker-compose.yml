@@ -1,0 +1,18 @@
+version: "3.5"
+services:
+    tocotoco:
+        image: java5_v2
+        environment: 
+            MYSQL_URL: jdbc:mysql://mysql:3306/java5_database
+            MYSQL_USERNAME: root
+            MYSQL_PASSWORD: secret
+        ports: 
+            - 8080:8080
+    mysql:
+        image: mysql:8
+        volumes: 
+            - java5:/var/lib/mysql
+        environment: 
+            MYSQL_ROOT_PASSWORD: secret
+volumes: 
+    java5:

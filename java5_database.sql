@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.25, for Linux (x86_64)
 --
--- Host: localhost    Database: TocotocoSpring
+-- Host: localhost    Database: java5_database
 -- ------------------------------------------------------
 -- Server version	8.0.25-0ubuntu0.20.04.1
 
@@ -16,62 +16,62 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Category`
+-- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `Category`;
+DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Category` (
+CREATE TABLE `category` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Category`
+-- Dumping data for table `category`
 --
 
-LOCK TABLES `Category` WRITE;
-/*!40000 ALTER TABLE `Category` DISABLE KEYS */;
-INSERT INTO `Category` VALUES (3,'Chè'),(4,'Fresh Fruit Tea'),(5,'Macchiato'),(6,'Trà sữa');
-/*!40000 ALTER TABLE `Category` ENABLE KEYS */;
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (3,'Chè'),(4,'Fresh Fruit Tea'),(5,'Macchiato'),(6,'Trà sữa');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Ice`
+-- Table structure for table `ice`
 --
 
-DROP TABLE IF EXISTS `Ice`;
+DROP TABLE IF EXISTS `ice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Ice` (
+CREATE TABLE `ice` (
   `id` int NOT NULL AUTO_INCREMENT,
   `ice_percent` int NOT NULL,
   `icePercent` bigint DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Ice`
+-- Dumping data for table `ice`
 --
 
-LOCK TABLES `Ice` WRITE;
-/*!40000 ALTER TABLE `Ice` DISABLE KEYS */;
-INSERT INTO `Ice` VALUES (1,100,NULL),(2,75,NULL),(3,50,NULL);
-/*!40000 ALTER TABLE `Ice` ENABLE KEYS */;
+LOCK TABLES `ice` WRITE;
+/*!40000 ALTER TABLE `ice` DISABLE KEYS */;
+INSERT INTO `ice` VALUES (1,101,NULL),(2,75,NULL),(3,50,NULL),(4,1,NULL);
+/*!40000 ALTER TABLE `ice` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Item`
+-- Table structure for table `item`
 --
 
-DROP TABLE IF EXISTS `Item`;
+DROP TABLE IF EXISTS `item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Item` (
+CREATE TABLE `item` (
   `id` int NOT NULL AUTO_INCREMENT,
   `product_id` int DEFAULT NULL,
   `sugar_id` int DEFAULT NULL,
@@ -85,208 +85,53 @@ CREATE TABLE `Item` (
   KEY `FKese81yfpu2o55cuhplvr0lxe8` (`size_id`),
   KEY `FKddm68cs60y6ut3srss14mxyic` (`sugar_id`),
   KEY `FK_RECEIPT` (`receipt_id`),
-  CONSTRAINT `FK_ITEM_ICE` FOREIGN KEY (`ice_id`) REFERENCES `Ice` (`id`),
-  CONSTRAINT `FK_ITEM_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `Product` (`id`),
-  CONSTRAINT `FK_ITEM_SIZE` FOREIGN KEY (`size_id`) REFERENCES `Size` (`id`),
-  CONSTRAINT `FK_ITEM_SUGAR` FOREIGN KEY (`sugar_id`) REFERENCES `Sugar` (`id`),
-  CONSTRAINT `FK_RECEIPT` FOREIGN KEY (`receipt_id`) REFERENCES `Receipt` (`id`),
-  CONSTRAINT `FKddm68cs60y6ut3srss14mxyic` FOREIGN KEY (`sugar_id`) REFERENCES `Sugar` (`id`),
-  CONSTRAINT `FKe0es87ddfnjc34vb3atxiv0qm` FOREIGN KEY (`ice_id`) REFERENCES `Ice` (`id`),
-  CONSTRAINT `FKese81yfpu2o55cuhplvr0lxe8` FOREIGN KEY (`size_id`) REFERENCES `Size` (`id`),
-  CONSTRAINT `FKt9no2hebi43y3umpo8xj3fadr` FOREIGN KEY (`product_id`) REFERENCES `Product` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `FK_ITEM_ICE` FOREIGN KEY (`ice_id`) REFERENCES `ice` (`id`),
+  CONSTRAINT `FK_ITEM_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
+  CONSTRAINT `FK_ITEM_SIZE` FOREIGN KEY (`size_id`) REFERENCES `size` (`id`),
+  CONSTRAINT `FK_ITEM_SUGAR` FOREIGN KEY (`sugar_id`) REFERENCES `sugar` (`id`),
+  CONSTRAINT `FK_RECEIPT` FOREIGN KEY (`receipt_id`) REFERENCES `receipt` (`id`),
+  CONSTRAINT `FKddm68cs60y6ut3srss14mxyic` FOREIGN KEY (`sugar_id`) REFERENCES `sugar` (`id`),
+  CONSTRAINT `FKe0es87ddfnjc34vb3atxiv0qm` FOREIGN KEY (`ice_id`) REFERENCES `ice` (`id`),
+  CONSTRAINT `FKese81yfpu2o55cuhplvr0lxe8` FOREIGN KEY (`size_id`) REFERENCES `size` (`id`),
+  CONSTRAINT `FKt9no2hebi43y3umpo8xj3fadr` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Item`
+-- Dumping data for table `item`
 --
 
-LOCK TABLES `Item` WRITE;
-/*!40000 ALTER TABLE `Item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Item` ENABLE KEYS */;
+LOCK TABLES `item` WRITE;
+/*!40000 ALTER TABLE `item` DISABLE KEYS */;
+INSERT INTO `item` VALUES (41,5,3,3,3,4,19),(42,8,3,3,3,2,19),(43,5,3,3,3,1,20),(44,5,3,3,3,1,21),(45,7,3,3,3,2,22),(46,5,3,3,3,1,23),(47,8,3,3,3,1,23),(48,5,3,3,1,1,24),(49,5,3,3,1,4,25),(50,7,3,4,1,1,26),(51,4,2,1,1,5,27),(52,12,3,4,1,3,28),(53,7,3,4,1,1,28),(54,4,3,4,1,1,29),(55,22,3,4,1,1,30),(56,21,3,4,1,1,31),(57,20,3,4,1,1,32),(58,5,3,4,1,1,33),(59,5,3,4,3,1,33),(60,15,3,4,3,5,34),(61,6,3,4,3,1,35),(62,6,3,4,3,1,35),(63,15,3,4,4,1,36),(64,7,3,4,4,1,36),(65,5,3,4,4,3,37),(66,10,3,4,4,1,38),(67,11,3,4,4,1,38),(68,9,3,4,4,1,38);
+/*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Item_Topping`
+-- Table structure for table `item_topping`
 --
 
-DROP TABLE IF EXISTS `Item_Topping`;
+DROP TABLE IF EXISTS `item_topping`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Item_Topping` (
+CREATE TABLE `item_topping` (
   `item_id` int DEFAULT NULL,
-  `toppings_id` int DEFAULT NULL,
+  `topping_id` int DEFAULT NULL,
   KEY `FK_ITEM` (`item_id`),
-  KEY `FK_TOPPING` (`toppings_id`),
-  CONSTRAINT `FK_ITEM` FOREIGN KEY (`item_id`) REFERENCES `Item` (`id`),
-  CONSTRAINT `FK_TOPPING` FOREIGN KEY (`toppings_id`) REFERENCES `Topping` (`id`)
+  KEY `FK_TOPPING` (`topping_id`),
+  CONSTRAINT `FK_ITEM` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`),
+  CONSTRAINT `FK_TOPPING` FOREIGN KEY (`topping_id`) REFERENCES `topping` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Item_Topping`
+-- Dumping data for table `item_topping`
 --
 
-LOCK TABLES `Item_Topping` WRITE;
-/*!40000 ALTER TABLE `Item_Topping` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Item_Topping` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Product`
---
-
-DROP TABLE IF EXISTS `Product`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Product` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `price` float NOT NULL,
-  `sale` int DEFAULT NULL,
-  `image` longtext NOT NULL,
-  `category_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKexqqeaksnmmku5py194ywp140` (`category_id`),
-  CONSTRAINT `FK_PRODUCT_CATEGORY` FOREIGN KEY (`category_id`) REFERENCES `Category` (`id`),
-  CONSTRAINT `FKexqqeaksnmmku5py194ywp140` FOREIGN KEY (`category_id`) REFERENCES `Category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Product`
---
-
-LOCK TABLES `Product` WRITE;
-/*!40000 ALTER TABLE `Product` DISABLE KEYS */;
-INSERT INTO `Product` VALUES (4,'Choco Cream Cake hạt dẻ',40000,10,'image/product/chanh-leo-tran-chau-suong-mai.png',3),(5,'Chanh Leo Trân Châu Sương Mai',25000,20,'image/product/chanh-leo-tran-chau-suong-mai.png',6),(6,'Hồng long xoài trân châu baby',100000,20,'image/product/hong-long-xoai-tran-chau-baby.png',5),(7,'Hồng trà bưởi mật ong',39000,10,'image/product/hong-tra-buoi-mat-ong.png',3),(8,'Oolong Trân châu Baby Kem Café',25000,15,'image/product/tran-chau-baby-kem-cafe.png',6),(9,'Probi bưởi trân châu sương mai',25000,15,'image/product/buoi-chan-trau-suong-mai.png',6),(10,'Probi xoài trân châu sương mai',25000,15,'image/product/xoai-tran-chau-suong-mai.png',6),(11,'Trà sữa Panda',25000,15,'image/product/tra-sua-panda.png',6),(12,'Trà sữa khoai môn hoàng kim',25000,15,'image/product/tra-sua-khoai-mon-hoang-kim.png',6),(13,'Trà sữa trân châu hoàng gia',25000,15,'image/product/tra-sua-tran-chau-hoang-gia.png',6),(14,'Ô Long Kiwi QQ',25000,15,'image/product/o-long-kiwi-qq.png',6),(15,'cafe',20000,10,'image/product/cafe.png',3);
-/*!40000 ALTER TABLE `Product` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Receipt`
---
-
-DROP TABLE IF EXISTS `Receipt`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Receipt` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `date` date NOT NULL,
-  `user_id` int NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Receipt`
---
-
-LOCK TABLES `Receipt` WRITE;
-/*!40000 ALTER TABLE `Receipt` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Receipt` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Size`
---
-
-DROP TABLE IF EXISTS `Size`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Size` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `size` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Size`
---
-
-LOCK TABLES `Size` WRITE;
-/*!40000 ALTER TABLE `Size` DISABLE KEYS */;
-INSERT INTO `Size` VALUES (1,'Size M'),(2,'Size S'),(3,'Size L');
-/*!40000 ALTER TABLE `Size` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Sugar`
---
-
-DROP TABLE IF EXISTS `Sugar`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Sugar` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `sugar_percent` int NOT NULL,
-  `sugarPercent` bigint DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Sugar`
---
-
-LOCK TABLES `Sugar` WRITE;
-/*!40000 ALTER TABLE `Sugar` DISABLE KEYS */;
-INSERT INTO `Sugar` VALUES (1,100,NULL),(2,75,NULL),(3,50,NULL);
-/*!40000 ALTER TABLE `Sugar` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Topping`
---
-
-DROP TABLE IF EXISTS `Topping`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Topping` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `price` float NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Topping`
---
-
-LOCK TABLES `Topping` WRITE;
-/*!40000 ALTER TABLE `Topping` DISABLE KEYS */;
-INSERT INTO `Topping` VALUES (1,8000,'Trân châu sợi'),(2,8000,'Rau Câu'),(3,8000,'Thạch Cafe'),(4,8000,'Trân châu baby'),(5,8000,'Trân châu hoàng kim'),(6,8000,'Pudding'),(7,8000,'Đậu đỏ');
-/*!40000 ALTER TABLE `Topping` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `category`
---
-
-DROP TABLE IF EXISTS `category`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `category` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `category_id` int NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `description` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modified_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `category`
---
-
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (6,1111,'clothes','nothing','2021-05-21 15:25:17','2021-05-21 15:25:17');
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+LOCK TABLES `item_topping` WRITE;
+/*!40000 ALTER TABLE `item_topping` DISABLE KEYS */;
+INSERT INTO `item_topping` VALUES (41,1),(41,2),(41,3),(42,1),(42,2),(42,3),(44,1),(47,1),(47,2),(49,1),(49,2),(49,3),(51,1),(51,2),(51,3),(51,4),(51,5),(61,1),(61,2),(61,3),(61,4),(61,5),(61,6),(61,7),(62,1),(62,2),(62,3),(62,4),(62,5),(62,6),(62,7),(64,1),(64,2),(64,3),(64,4),(68,1),(68,2),(68,3);
+/*!40000 ALTER TABLE `item_topping` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -298,23 +143,17 @@ DROP TABLE IF EXISTS `product`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `product` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `product_id` int NOT NULL,
   `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `description` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `url_image` varchar(1000) NOT NULL,
-  `quantity` int NOT NULL,
-  `quantity_sold` int NOT NULL DEFAULT '0',
-  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modified_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `repository_id` int NOT NULL,
+  `price` float NOT NULL,
+  `sale` int DEFAULT NULL,
+  `image` longtext NOT NULL,
   `category_id` int NOT NULL,
+  `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT 'không có dữ liệu',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `product_id` (`product_id`),
-  KEY `fk_product1_category` (`category_id`),
-  KEY `fk_product1_repository` (`repository_id`),
-  CONSTRAINT `fk_product1_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_product1_repository` FOREIGN KEY (`repository_id`) REFERENCES `repository` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FKexqqeaksnmmku5py194ywp140` (`category_id`),
+  CONSTRAINT `FK_PRODUCT_CATEGORY` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FKexqqeaksnmmku5py194ywp140` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,41 +162,143 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (4,123,'polo shirt','nothing','google',12,0,'2021-05-21 15:32:29','2021-05-21 15:32:29',1,6);
+INSERT INTO `product` VALUES (4,'Choco Cream Cake hạt dẻ',40000,10,'images/product/Screenshot from 2021-06-19 21-31-38.png',4,'không có dữ liêu'),(5,'Chanh Leo Trân Châu Sương Mai',25000,20,'images/product/chanh-leo-tran-chau-suong-mai.png',6,'không có dữ liêu'),(6,'Hồng long xoài trân châu baby',100000,20,'images/product/hong-long-xoai-tran-chau-baby.png',5,'không có dữ liêu'),(7,'Hồng trà bưởi mật ong',39000,10,'images/product/Screenshot from 2021-06-17 22-07-42.png',3,'không có dữ liêu'),(8,'Oolong Trân châu Baby Kem Café',25000,15,'images/product/tran-chau-baby-kem-cafe.png',6,'không có dữ liêu'),(9,'Probi bưởi trân châu sương mai',25000,15,'images/product/buoi-chan-trau-suong-mai.png',6,'không có dữ liêu'),(10,'Probi xoài trân châu sương mai',25000,15,'images/product/xoai-tran-chau-suong-mai.png',6,'không có dữ liêu'),(11,'Trà sữa Panda',25000,15,'images/product/tra-sua-panda.png',6,'không có dữ liêu'),(12,'Trà sữa khoai môn hoàng kim',25000,15,'images/product/tra-sua-khoai-mon-hoang-kim.png',6,'không có dữ liêu'),(13,'Trà sữa trân châu hoàng gia',25000,15,'images/product/tra-sua-tran-chau-hoang-gia.png',6,'không có dữ liêu'),(14,'Ô Long Kiwi QQ',25000,15,'images/product/o-long-kiwi-qq.png',6,'không có dữ liêu'),(15,'cafe',20000,10,'images/product/cafe.png',3,'không có dữ liêu'),(20,'Bear',111,10,'images/product/Screenshot from 2021-06-17 16-44-39.png',3,'asdfasdf'),(21,'SuongNguyen',111,0,'images/product/Screenshot from 2021-06-19 21-31-38.png',4,'Beo'),(22,'Nguyen Van F',111,0,'images/product/Screenshot from 2021-06-17 22-07-42.png',4,'Beo'),(33,'asdfasfdasdf',111,1,'images/product/orange-mirinda.jpg',3,'asdfasdfs'),(34,'san pham',10000,0,'images/product/0063149.jpg',4,'khong co du lieu'),(35,'sdafasdf',121,0,'images/product/green-mirinda.jpg',3,'sadfasdfasdf');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `repository`
+-- Table structure for table `receipt`
 --
 
-DROP TABLE IF EXISTS `repository`;
+DROP TABLE IF EXISTS `receipt`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `repository` (
+CREATE TABLE `receipt` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `repository_id` int NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `address` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `created_date` datetime NOT NULL,
-  `modified_date` datetime NOT NULL,
+  `date` datetime NOT NULL,
+  `user_id` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `repository_id` (`repository_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fk_receipt_user` (`user_id`),
+  CONSTRAINT `fk_receipt_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `repository`
+-- Dumping data for table `receipt`
 --
 
-LOCK TABLES `repository` WRITE;
-/*!40000 ALTER TABLE `repository` DISABLE KEYS */;
-INSERT INTO `repository` VALUES (1,12345,'hanoi','Hà Nội','2021-05-21 14:25:40','2021-05-21 14:25:40'),(3,12346,'hanoi','Hà Nội','2021-05-21 14:27:30','2021-05-21 14:27:30');
-/*!40000 ALTER TABLE `repository` ENABLE KEYS */;
+LOCK TABLES `receipt` WRITE;
+/*!40000 ALTER TABLE `receipt` DISABLE KEYS */;
+INSERT INTO `receipt` VALUES (19,'2021-06-19 00:00:00',1),(20,'2021-06-19 00:00:00',1),(21,'2021-06-19 00:00:00',1),(22,'2021-06-19 00:00:00',1),(23,'2021-06-20 00:00:00',1),(24,'2021-06-21 00:00:00',2),(25,'2021-06-22 00:00:00',1),(26,'2021-06-24 00:00:00',1),(27,'2021-06-24 00:00:00',1),(28,'2021-06-24 00:00:00',5),(29,'2021-06-24 00:00:00',5),(30,'2021-06-24 00:00:00',5),(31,'2021-06-24 00:00:00',5),(32,'2021-06-24 00:00:00',1),(33,'2021-06-24 00:00:00',5),(34,'2021-06-24 00:00:00',5),(35,'2021-06-24 00:00:00',1),(36,'2021-06-25 00:00:00',5),(37,'2021-06-25 00:00:00',1),(38,'2021-06-25 00:00:00',1);
+/*!40000 ALTER TABLE `receipt` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'TocotocoSpring'
+-- Table structure for table `size`
+--
+
+DROP TABLE IF EXISTS `size`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `size` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `size` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `size`
+--
+
+LOCK TABLES `size` WRITE;
+/*!40000 ALTER TABLE `size` DISABLE KEYS */;
+INSERT INTO `size` VALUES (1,'Size M'),(2,'Size S'),(3,'Size L'),(4,'XMLA');
+/*!40000 ALTER TABLE `size` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sugar`
+--
+
+DROP TABLE IF EXISTS `sugar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sugar` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `sugar_percent` int NOT NULL,
+  `sugarPercent` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sugar`
+--
+
+LOCK TABLES `sugar` WRITE;
+/*!40000 ALTER TABLE `sugar` DISABLE KEYS */;
+INSERT INTO `sugar` VALUES (1,101,NULL),(2,75,NULL),(3,50,NULL);
+/*!40000 ALTER TABLE `sugar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `topping`
+--
+
+DROP TABLE IF EXISTS `topping`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `topping` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `price` float NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `topping`
+--
+
+LOCK TABLES `topping` WRITE;
+/*!40000 ALTER TABLE `topping` DISABLE KEYS */;
+INSERT INTO `topping` VALUES (1,8000,'Trân châu sợi'),(2,8000,'Rau Câu'),(3,8000,'Thạch Cafe'),(4,8000,'Trân châu baby'),(5,8000,'Trân châu hoàng kim'),(6,8000,'Pudding'),(7,8000,'Đậu đỏ'),(8,10001,'trân châu');
+/*!40000 ALTER TABLE `topping` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `address` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `mobile` varchar(20) DEFAULT NULL,
+  `role` varchar(20) DEFAULT NULL,
+  `active` bit(1) DEFAULT b'1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'admin','admin','ha noi','suong@gmail.com','01','ROLE_ADMIN',_binary ''),(2,'nguyenvansuong','nguyenvansuong',NULL,'suongnguyenytm2001@gmail.com',NULL,'ROLE_USER',_binary ''),(5,'lelongdung','123456789','Ha Noi','admin@gmail.com','+84387958475','ROLE_USER',_binary ''),(16,'asdflasdfkjl','lkasjfdlkajsdflkasd','asdflkasjdf','suongnguyenytm2001@gmail.com','0387958475','ROLE_USER',_binary ''),(17,'adfasdfasdf','asdfasdfasdf','sadfasdfasd','suongnguyenytm2001@gmail.com','0387958475','ROLE_USER',_binary '');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'java5_database'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -369,4 +310,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-16  9:58:39
+-- Dump completed on 2021-06-29 12:52:05

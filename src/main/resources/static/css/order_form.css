@@ -23,21 +23,20 @@
     right: 0;
     top: 50px;
     margin: auto;
-    animation: open-oder .4s forwards;
+    animation: open-order 1s forwards;
+    width: 800px;
 }
 
 .product-form-info {
     display: flex;
 }
 
-@keyframes open-oder {
+@keyframes open-order {
     from {
-        width: 0%;
-        min-height: 0px;
+        transform: scale(0);
     }
     to {
-        width: 50%;
-        min-height: 600px;
+        transform: scale(1A);
     }
 }
 

@@ -29,7 +29,7 @@ public class HomeController {
 	
 	@GetMapping(path = {"/home", "/"})
 	public String home(Model model) {
-		model.addAttribute("categories", categoryService.findAll());
+		model.addAttribute("categories", categoryService.	findAll());
 		return "home";
 	}
 

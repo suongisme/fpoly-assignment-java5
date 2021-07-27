@@ -12,7 +12,7 @@
                                   maxFractionDigits="0" currencyCode="VND" type="currency" />
             </p>
             <a class="info__btn"
-               href="${pageContext.request.contextPath}/order?product_id=${product.id}"
+               href="${pageContext.request.contextPath}/order?product_id=${product.id}&category_id=${product.category.id}"
                target="_blank">Mua Ngay</a>
             <div class="info__desc">
                 <h4>${product.description}</h4>
